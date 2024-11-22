@@ -1,0 +1,45 @@
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mov {
+  animation: move 200ms forwards;
+}
+@keyframes move {
+  0% {
+    top: -10px;
+  }
+  100% {
+    top: -40px;
+  }
+}
+.screen {
+  animation: scrin 200ms ease-in-out forwards;
+}
+
+@keyframes scrin {
+  0% {
+    width: 0;
+    height: 0vh;
+  }
+  100% {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+/* .scof {
+  animation: scrinof 200ms ease-in-out forwards;
+  overflow: hidden;
+} */
+
+/* @keyframes scrinof {
+  0% {
+    width: 100%;
+    height: 100vh;
+  }
+  100% {
+    width: 0;
+    height: 0vh;
+  }
+} */
