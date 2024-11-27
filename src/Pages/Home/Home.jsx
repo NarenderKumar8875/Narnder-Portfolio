@@ -2,11 +2,11 @@ import React, { useRef, useState } from 'react'
 import nLogo from './Real logo.svg'
 import mainLogo from './mainLogo.svg'
 
-import MatterScene from '../anim'
-import Button from '../Button/Button'
+import MatterScene from '../../Components/anim'
+import Button from '../../Components/Button/Button'
 import { Link } from 'react-router-dom'
-import About from '../Pages/About Page/About'
-import LatestWork from '../Pages/Latest Work/LatestWork'
+import About from '../About/About'
+import LatestWork from '../Latest Work/LatestWork'
 
 const links = [
   { logo: <i className="fa-brands fa-linkedin"></i>, link: '/' },
@@ -23,7 +23,7 @@ const Home = () => {
   const [hidden, setHidden] = useState(false)
   const scroll = useRef(null)
 
-  
+
 
   return (
     <>
@@ -63,7 +63,7 @@ const Home = () => {
           <img className='md:w-[25rem] max-md:w-[15rem]' src={mainLogo} />
         </div>
 
-        <div className='flex justify-center items-center relative group mt-10'>
+        <div className='flex justify-center items-center relative group max-sm:mt-5 sm:-mt-5'>
           <Button value={'Latest Work'} scroll={scroll} />
           <i className="fa-solid fa-arrow-down-long sm:text-4xl max-sm:text-2xl absolute top-[1.9rem] sm:group-hover:top-[2.8rem] max-sm:group-hover:top-[2.5rem] duration-200 z-10 text-white"></i>
         </div>
@@ -76,7 +76,7 @@ const Home = () => {
 
       <About hidden={hidden} setHidden={setHidden} />
 
-      <LatestWork hidden={hidden} scroll={scroll}/>
+      <LatestWork hidden={hidden} scroll={scroll} />
     </>
   )
 }

@@ -1,0 +1,38 @@
+.text {
+  position: relative;
+  color: rgb(233, 162, 11);
+}
+
+.text::before {
+  content: attr(data-text);
+  position: absolute;
+  font-size: 8rem;
+  left: 0;
+  top: 0;
+  color: gray;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  transition: 300ms cubic-bezier(0.694, 0.048, 0.335, 1) 350ms;
+}
+
+.group:hover .text::before {
+  height: 10%;
+}
+
+.trans {
+  transition: 300ms cubic-bezier(0.694, 0.048, 0.335, 1) 100ms;
+}
+
+.blur {
+  animation: blurr 300ms forwards;
+}
+
+@keyframes blurr {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
