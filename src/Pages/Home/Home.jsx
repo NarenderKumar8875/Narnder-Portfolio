@@ -17,11 +17,11 @@ const links = [
 ]
 
 
-
 const Home = () => {
 
   const [hidden, setHidden] = useState(false)
   const scroll = useRef(null)
+  const [admin, setAdmin] = useState(false)
 
 
 
@@ -42,11 +42,20 @@ const Home = () => {
           <div className='text-white flex flex-col gap-5 sm:pl-20 pt-20 items-start z-10'>
             <h1 className='sm:text-6xl max-sm:text-2xl font-bold'>Narender Kumar</h1>
             <h1 className=' sm:text-3xl max-sm:text-xl font-extralight'><b className='sm:text-4xl max-sm:text-3xl text-[#dd052b]'>MERN</b> Stack Developer</h1>
+            {/* ABOUT ME BUTTON */}
             <div className='flex items-center justify-center relative group'>
               <Button value={'About Me'} hidden={hidden} setHidden={setHidden} />
               <i className="fa-solid fa-arrow-right-long sm:text-4xl max-sm:text-2xl absolute z-10 sm:-right-5 max-sm:-right-4 sm:group-hover:-right-10 duration-200 max-sm:group-hover:-right-7"></i>
             </div>
+
+            {/* LOGIN BUTTON */}
+            <div className='flex items-center justify-center relative group'>
+              <Link to='/login'><Button value={'Admin-Login'} /></Link>
+              <i className="fa-solid fa-arrow-right-long sm:text-4xl max-sm:text-2xl absolute z-10 sm:-right-5 max-sm:-right-4 sm:group-hover:-right-10 duration-200 max-sm:group-hover:-right-7"></i>
+            </div>
           </div>
+
+
 
           <div className='text-[#b0b2c3] text-3xl sm:mt-20 max-sm:pt-5 flex flex-col gap-6'>
             {
@@ -62,7 +71,7 @@ const Home = () => {
         <div className='absolute top-28  xl:right-[20rem] max-xl:right-[5rem] max-sm:right-10 min-w-[15rem] -z-10'>
           <img className='md:w-[25rem] max-md:w-[15rem]' src={mainLogo} />
         </div>
-
+        {/* SEE LATEST WORK BUTTON */}
         <div className='flex justify-center items-center relative group max-sm:mt-5 sm:-mt-5'>
           <Button value={'Latest Work'} scroll={scroll} />
           <i className="fa-solid fa-arrow-down-long sm:text-4xl max-sm:text-2xl absolute top-[1.9rem] sm:group-hover:top-[2.8rem] max-sm:group-hover:top-[2.5rem] duration-200 z-10 text-white"></i>

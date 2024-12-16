@@ -6,6 +6,8 @@ import {
 } from "./Latest Work Background/LatestWorkBackground";
 import Button from "../../Components/Button/Button";
 
+import axios from 'axios'
+
 import "./LatestWork.css";
 
 const LatestWork = ({ hidden, scroll }) => {
@@ -21,6 +23,19 @@ const LatestWork = ({ hidden, scroll }) => {
     setIsHover('')
   }, [width])
 
+  //MY BACKEND DATA FETCHING
+  const [project, setProject] = useState();
+  const url = 'http://localhost:4000';
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      const response = await axios.get(`${url}/api/project`)
+      setProject(response.data.data)
+    }
+    fetchProject()
+  }, [])
+
+
   return (
     <>
       <div
@@ -35,10 +50,10 @@ const LatestWork = ({ hidden, scroll }) => {
         <div className="mt-16">
           <ul className="flex flex-col sm:gap-10 max-sm:gap-0 py-10">
             {
-              latestWorkBackground.map((all, i) =>
+              project === undefined ? "" : project.map((all, i) =>
                 <li key={i} className="flex justify-center overflow-hidden">
                   <div className={`${width > 1024 ? all.pl : ''} bg-black relative cursor-pointer shadow-[5px_5px_20px_8px_gray] my-10 group`}>
-                    <img className={`lg:max-w-[45rem] opacity-[0.4]`} src={all.background} />
+                    <img className={`lg:max-w-[45rem] opacity-[0.4]`} src={`${url}/images/${all.background}`} />
 
                     {/* HOVER BACKGROUND */}
                     <div className="absolute w-full h-full top-0 left-0">
@@ -60,7 +75,7 @@ const LatestWork = ({ hidden, scroll }) => {
                     {/* TECHNOLOGY USE */}
                     <div className="absolute top-0 left-0 h-full w-full max-sm:text-[10px]">
                       <div className={`hidden ${width < 1024 ? '' : 'group-hover:flex'} flex-wrap gap-3 pt-[10rem] items-center justify-center h-full text-white`}>
-                        <h1 className="pt-[3px]">Technology:</h1>
+
                         {
                           all.react ? react.map((tec) =>
                             <div className="rounded-[20rem] border border-zinc-300">
@@ -88,7 +103,8 @@ const LatestWork = ({ hidden, scroll }) => {
                       </div>
                     </div>
 
-                    <div className={`${width < 1024 ? 'hidden' : ''} absolute top-0 right-0 select-none`}>
+                    {/* NUMBER POPUP */}
+                    <div className={`${width < 1024 ? 'hidden' : ''} absolute top-0 ${all.side} select-none`}>
                       <div data-text={all.sr} className="text -translate-y-10 group-hover:-translate-y-16 duration-300 opacity-0 group-hover:opacity-100">
                         <h1 className="text-[8rem] bg-transparent">{all.sr}</h1>
                       </div>

@@ -3,6 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Login from './Pages/Login/Login.jsx'
+import Home from './Pages/Home/Home.jsx'
+import Admin from './Pages/Admin/Admin.jsx'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter(
   [
@@ -11,8 +17,16 @@ const router = createBrowserRouter(
       element: <App />,
       children: [
         {
-          path: 'about',
-          element: <h1>About</h1>
+          path: '/',
+          element: <Home />
+        },
+        {
+          path: '/login',
+          element: <Login />
+        },
+        {
+          path: '/admin',
+          element: <Admin />
         }
       ]
     },
@@ -31,6 +45,7 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')).render(
   <>
+    <ToastContainer />
     <RouterProvider future={{
       v7_startTransition: true,
     }} router={router} />
